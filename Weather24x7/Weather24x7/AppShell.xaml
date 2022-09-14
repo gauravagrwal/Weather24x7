@@ -7,15 +7,55 @@
 
     <Shell.FlyoutHeader>
         <Label
-            Padding="25"
-            CharacterSpacing="1"
+            CharacterSpacing="0.5"
             FontAttributes="Bold"
             FontSize="Title"
-            Text="Weather 24x7" />
+            HeightRequest="150"
+            HorizontalTextAlignment="Center"
+            Text="Weather 24x7"
+            VerticalTextAlignment="Center" />
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Main">
-        <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" />
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid
+                Padding="20,10"
+                ColumnDefinitions="0.2*,0.8*"
+                ColumnSpacing="10"
+                HeightRequest="40">
+                <Image Grid.Column="0" Source="{Binding FlyoutIcon}" />
+                <Label
+                    Grid.Column="1"
+                    FontSize="Medium"
+                    Text="{Binding Title}"
+                    VerticalTextAlignment="Center" />
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#F2F2F2" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <FlyoutItem Title="Home" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage" />
+    </FlyoutItem>
+    <FlyoutItem Title="Locations" Icon="ic_location.png">
+        <ShellContent ContentTemplate="{DataTemplate views:LocationsPage}" Route="LocationsPage" />
+    </FlyoutItem>
+    <FlyoutItem Title="Settings" Icon="ic_settings.png">
+        <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" Route="SettingsPage" />
+    </FlyoutItem>
+    <FlyoutItem Title="About" FlyoutIcon="ic_about.png">
+        <ShellContent ContentTemplate="{DataTemplate views:AboutPage}" Route="AboutPage" />
     </FlyoutItem>
 
     <Shell.FlyoutFooter>

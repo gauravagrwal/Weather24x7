@@ -10,7 +10,10 @@ namespace Weather24x7
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+            Routing.RegisterRoute(nameof(LocationsPage), typeof(LocationsPage));
+            Routing.RegisterRoute(nameof(SettingsPage), typeof(SettingsPage));
+            Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
 
             AppCurrentVersion.Text = $"version {VersionTracking.CurrentVersion}";
         }
